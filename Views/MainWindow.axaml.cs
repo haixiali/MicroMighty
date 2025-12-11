@@ -1,3 +1,4 @@
+using System;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -9,33 +10,20 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        
-        DragArea.PointerPressed += DragArea_PointerPressed;
-        // MyMenu.PointerPressed += DragArea_PointerPressed;
     }
     
-    private void DragArea_PointerPressed(object? sender, PointerPressedEventArgs e)
-    {
-        if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
-        {
-            BeginMoveDrag(e);
-        }
-    }
-
-    private void Minimize_Click(object? sender, RoutedEventArgs e)
-    {
-        WindowState = WindowState.Minimized;
-    }
-
-    private void MaximizeRestore_Click(object? sender, RoutedEventArgs e)
-    {
-        WindowState = WindowState == WindowState.Maximized
-            ? WindowState.Normal
-            : WindowState.Maximized;
-    }
-
-    private void Close_Click(object? sender, RoutedEventArgs e)
+    private void ExitButton_OnClick(object? sender, RoutedEventArgs e)
     {
         Close();
+    }
+
+    private void MaximizeButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void MinimizeButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
     }
 }
