@@ -7,7 +7,11 @@
         x:Class="MicroMighty.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="MicroMighty">
+        Title="MicroMighty"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="0"
+        TransparencyLevelHint="AcrylicBlur">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,6 +19,42 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <StackPanel Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Menu Grid.Column="0" Name="MyMenu" DockPanel.Dock="Top" Background="Green" VerticalAlignment="Center">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open..."/>
+                    <Separator/>
+                    <MenuItem Header="_Exit"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="Copy"/>
+                    <MenuItem Header="Paste"/>
+                </MenuItem>
+            </Menu>
+            
+            <Rectangle Grid.Column="1" Fill="Gray" Height="32" Name="DragArea"/>
+            <Button Grid.Column="2" Content="—" Click="Minimize_Click"/>
+            <Button Grid.Column="3" Content="▢" Click="MaximizeRestore_Click"/>
+            <Button Grid.Column="4" Content="✕" Click="Close_Click"/>
+        </Grid>
+        
+        <StackPanel Height="50" Orientation="Horizontal">
+            <Rectangle Fill="Red" Width="100"/>
+            <Rectangle Fill="Blue" Width="100"/>
+            <Rectangle Fill="Green" Width="100"/>
+            <Rectangle Fill="Orange" Width="100"/>
+        </StackPanel>
+        <Rectangle Fill="Blue" Height="50"/>
+        <Rectangle Fill="Green" Height="100"/>
+        <Rectangle Fill="Orange" Height="150"/>
+    </StackPanel>
 </Window>
