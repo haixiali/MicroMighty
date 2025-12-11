@@ -11,7 +11,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-    
+
     private void ExitButton_OnClick(object? sender, RoutedEventArgs e)
     {
         Close();
@@ -19,11 +19,11 @@ public partial class MainWindow : Window
 
     private void MaximizeButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
     }
 
     private void MinimizeButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        WindowState = WindowState.Minimized;
     }
 }
